@@ -1,11 +1,11 @@
 /* style.css */
 :root {
-    --gold: #001f3f;
-    --dark-gold: #ffb300;
-    --black: #00d4ff;
-    --dark-gray: #001a35;
-    --medium-gray: #ffa500;
-    --light-gray: rgba(255, 255, 255, 0.05);
+    --gold: #FFD700;
+    --dark-gold: #C5A000;
+    --black: #000000;
+    --dark-gray: #1A1A1A;
+    --medium-gray: #333333;
+    --light-gray: #4D4D4D;
     --white: #FFFFFF;
 }
 
