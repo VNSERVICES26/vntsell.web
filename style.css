@@ -1,12 +1,12 @@
 /* style.css */
 :root {
-    --gold: #FFD700;
-    --dark-gold: #C5A000;
-    --black: #000000;
-    --dark-gray: #1A1A1A;
-    --medium-gray: #333333;
-    --light-gray: #4D4D4D;
-    --white: #FFFFFF;
+    --gold: #ffb300;            /* secondary-color */
+    --dark-gold: #ffa500;        /* hover-color */
+    --black: #001f3f;            /* primary-color */
+    --dark-gray: rgba(0, 43, 92, 0.8);   /* card-bg */
+    --medium-gray: rgba(0, 43, 92, 0.8); /* card-bg */
+    --light-gray: rgba(255, 255, 255, 0.1); /* glass-border (optional) */
+    --white: #ffffff;            /* text-color */
 }
 
 * {
