@@ -1,12 +1,16 @@
 /* style.css */
 :root {
-    --gold: #ffb300;            /* secondary-color */
-    --dark-gold: #ffa500;        /* hover-color */
-    --black: #001f3f;            /* primary-color */
-    --dark-gray: rgba(0, 43, 92, 0.8);   /* card-bg */
-    --medium-gray: rgba(0, 43, 92, 0.8); /* card-bg */
-    --light-gray: rgba(255, 255, 255, 0.1); /* glass-border (optional) */
-    --white: #ffffff;            /* text-color */
+  --primary-color: #001f3f;
+  --secondary-color: #ffb300;
+  --accent-color: #00d4ff;
+  --text-color: #ffffff;
+  --card-bg: rgba(0, 43, 92, 0.8);
+  --footer-bg: #001a35;
+  --hover-color: #ffa500;
+  --glass-effect: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --neon-glow: 0 0 10px rgba(0, 212, 255, 0.7);
+  --button-glow: 0 0 15px rgba(255, 179, 0, 0.7);
 }
 
 * {
