@@ -132,12 +132,6 @@ nav ul li a {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: all 0.4s ease;
-  animation: cardFloat 4s ease-in-out infinite alternate;
-}
-
-@keyframes cardFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-5px); }
 }
 
 .info-card:hover {
