@@ -1,24 +1,27 @@
-/* style.css */
 :root {
-    --gold: #FFD700;
-    --dark-gold: #C5A000;
-    --black: #000000;
-    --dark-gray: #1A1A1A;
-    --medium-gray: #333333;
-    --light-gray: #4D4D4D;
-    --white: #FFFFFF;
+    --primary-color: #001f3f;
+    --secondary-color: #ffb300;
+    --accent-color: #00d4ff;
+    --text-color: #ffffff;
+    --card-bg: rgba(0, 43, 92, 0.8);
+    --footer-bg: #001a35;
+    --hover-color: #ffa500;
+    --glass-effect: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neon-glow: 0 0 10px rgba(0, 212, 255, 0.7);
+    --button-glow: 0 0 15px rgba(255, 179, 0, 0.7);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
-    background-color: var(--black);
-    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-color), #004080);
+    color: var(--text-color);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -29,10 +32,12 @@ body {
 .container {
     width: 100%;
     max-width: 600px;
-    background-color: var(--dark-gray);
-    border-radius: 10px;
+    background-color: var(--card-bg);
+    border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 20px var(--neon-glow);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
 }
 
 header {
@@ -41,33 +46,35 @@ header {
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 h1 {
-    color: var(--gold);
+    color: var(--secondary-color);
     font-size: 24px;
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 .gold-btn {
-    background-color: var(--gold);
-    color: var(--black);
+    background: linear-gradient(45deg, var(--secondary-color), var(--hover-color));
+    color: var(--primary-color);
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 50px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: var(--button-glow);
 }
 
 .gold-btn:hover {
-    background-color: var(--dark-gold);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--hover-color), var(--button-glow);
 }
 
 .gold-btn:disabled {
-    background-color: var(--light-gray);
-    color: var(--medium-gray);
+    background-color: var(--glass-border);
+    color: rgba(255,255,255,0.5);
     cursor: not-allowed;
     transform: none;
 }
@@ -78,10 +85,11 @@ h1 {
 }
 
 .swap-container {
-    background-color: var(--medium-gray);
-    border-radius: 8px;
+    background-color: var(--glass-effect);
+    border-radius: 12px;
     padding: 20px;
     margin-bottom: 20px;
+    border: 1px solid var(--glass-border);
 }
 
 .info-panel {
@@ -90,8 +98,9 @@ h1 {
     flex-wrap: wrap;
     margin-bottom: 20px;
     padding: 15px;
-    background-color: rgba(255, 215, 0, 0.1);
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
 }
 
 .info-item {
@@ -102,7 +111,7 @@ h1 {
 }
 
 .info-item span:first-child {
-    color: var(--gold);
+    color: var(--secondary-color);
     font-size: 14px;
     margin-bottom: 5px;
 }
@@ -114,29 +123,36 @@ h1 {
 .input-group label {
     display: block;
     margin-bottom: 8px;
-    color: var(--gold);
+    color: var(--secondary-color);
 }
 
 .input-group input {
     width: 100%;
     padding: 12px;
-    border-radius: 5px;
-    border: 1px solid var(--light-gray);
-    background-color: var(--dark-gray);
-    color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    background-color: var(--glass-effect);
+    color: var(--text-color);
     margin-bottom: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
 }
 
 .quote-result {
-    background-color: rgba(255, 215, 0, 0.1);
+    background-color: rgba(0, 212, 255, 0.1);
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     margin: 15px 0;
-    border: 1px solid var(--gold);
+    border: 1px solid var(--accent-color);
 }
 
 .quote-result p {
-    color: var(--gold);
+    color: var(--accent-color);
     font-weight: bold;
     text-align: center;
 }
@@ -157,26 +173,27 @@ h1 {
     align-items: center;
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid var(--light-gray);
+    border-top: 1px solid var(--glass-border);
 }
 
 #vnstContract {
     font-size: 12px;
-    word-break: break-all;
-    color: var(--gold);
+    word-break: break-word;
+    color: var(--accent-color);
 }
 
 #statusMessages {
     min-height: 50px;
     padding: 10px;
     margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+    background-color: rgba(0, 212, 255, 0.05);
+    border: 1px solid var(--glass-border);
 }
 
 .status-message {
     padding: 5px 0;
-    color: var(--gold);
+    color: var(--secondary-color);
 }
 
 .error-message {
