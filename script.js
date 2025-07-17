@@ -169,10 +169,6 @@ async function loadContractData() {
         const price = await swapContract.methods.getPricePerVNT().call();
         document.getElementById('vntPrice').textContent = `${formatUnits(price, 18)} USDT`;
         
-        const buyerWallet = await swapContract.methods.buyerWallet().call();
-        const availableUSDT = await usdtToken.methods.balanceOf(buyerWallet).call();
-        document.getElementById('availableUSDT').textContent = `${formatUnits(availableUSDT, usdtDecimals)} USDT`;
-        
         document.getElementById('vntContract').textContent = await swapContract.methods.vntToken().call();
     } catch (error) {
         showMessage(`Error loading contract data: ${error.message}`, 'error');
