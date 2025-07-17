@@ -1,16 +1,12 @@
 /* style.css */
 :root {
-  --primary-color: #001f3f;
-  --secondary-color: #ffb300;
-  --accent-color: #00d4ff;
-  --text-color: #ffffff;
-  --card-bg: rgba(0, 43, 92, 0.8);
-  --footer-bg: #001a35;
-  --hover-color: #ffa500;
-  --glass-effect: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --neon-glow: 0 0 10px rgba(0, 212, 255, 0.7);
-  --button-glow: 0 0 15px rgba(255, 179, 0, 0.7);
+    --gold: #001f3f;
+    --dark-gold: #ffb300;
+    --black: #00d4ff;
+    --dark-gray: #1A1A1A;
+    --medium-gray: #333333;
+    --light-gray: #4D4D4D;
+    --white: #FFFFFF;
 }
 
 * {
