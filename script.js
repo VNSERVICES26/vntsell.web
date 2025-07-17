@@ -145,8 +145,8 @@ async function initContracts() {
         const config = CONFIG.mainnet;
         web3 = new Web3(window.ethereum || config.rpcUrl);
         
-        const swapABI = 
-        const tokenABI = 
+        const swapABI = [ ];
+        const tokenABI = [ ];
 
         swapContract = new web3.eth.Contract(swapABI, config.vntSwapAddress);
         vntToken = new web3.eth.Contract(tokenABI, config.vntTokenAddress);
