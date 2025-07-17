@@ -23,10 +23,25 @@ let minSellAmount = 0;
 let vntDecimals = 18;
 let usdtDecimals = 18;
 
+// Initialize application
 window.addEventListener('load', async () => {
     try {
         await setupEventListeners();
         await checkWalletConnection();
+        
+        // Initialize Web3 first
+        if (window.ethereum) {
+            web3 = new Web3(window.ethereum);
+            try {
+                // Request account access if needed
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+            } catch (error) {
+                console.log("User denied account access");
+            }
+        } else {
+            web3 = new Web3(new Web3.providers.HttpProvider(CONFIG.testnet.rpcUrl));
+        }
+        
         await initContracts();
         setupInputListener();
         updateUI();
@@ -102,11 +117,13 @@ async function checkWalletConnection() {
             if (accounts.length > 0) {
                 currentAccount = accounts[0];
                 setupWalletEvents();
+                return true;
             }
         } catch (error) {
             console.error("Error checking wallet:", error);
         }
     }
+    return false;
 }
 
 function setupWalletEvents() {
@@ -184,6 +201,11 @@ async function connectWallet() {
         currentAccount = accounts[0];
         setupWalletEvents();
         
+        // Initialize Web3 if not already done
+        if (!web3) {
+            web3 = new Web3(window.ethereum);
+        }
+        
         // Initialize contracts if not already done
         if (!vntToken) {
             await initContracts();
@@ -209,14 +231,7 @@ async function connectWallet() {
 
 async function initContracts() {
     try {
-        // पहले Web3 को initialize करें
-        if (window.ethereum) {
-            web3 = new Web3(window.ethereum);
-        } else {
-            web3 = new Web3(new Web3.providers.HttpProvider(CONFIG.testnet.rpcUrl));
-        }
-
-        // एड्रेस वैलिडेशन
+        // Validate addresses
         const config = CONFIG.testnet;
         if (!web3.utils.isAddress(config.vntSwapAddress)) {
             throw new Error("Invalid VNT Swap contract address");
@@ -228,12 +243,12 @@ async function initContracts() {
             throw new Error("Invalid USDT Token address");
         }
 
-        // कॉन्ट्रैक्ट initialize करें
+        // Initialize contracts
         swapContract = new web3.eth.Contract(VNT_BUY_ABI, config.vntSwapAddress);
         vntToken = new web3.eth.Contract(ERC20_ABI, config.vntTokenAddress);
         usdtToken = new web3.eth.Contract(ERC20_ABI, config.usdtTokenAddress);
 
-        // कॉन्ट्रैक्ट डेटा लोड करें
+        // Load contract data
         minSellAmount = await swapContract.methods.minSell().call();
         vntDecimals = await vntToken.methods.decimals().call();
         usdtDecimals = await usdtToken.methods.decimals().call();
@@ -243,7 +258,7 @@ async function initContracts() {
         await loadContractData();
     } catch (error) {
         console.error("Contract initialization error:", error);
-        showMessage(`Contract init failed: ${error.message}`, 'error');
+        showMessage(`Contract initialization failed: ${error.message}`, 'error');
         throw error;
     }
 }
